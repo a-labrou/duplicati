@@ -34,7 +34,7 @@ jobs:
 
     - name: Build Duplicati (Windows)
       if: matrix.os == 'windows-latest'
-      run: msbuild -p:Configuration=Release .\Installer\Windows\build-msi.bat #Duplicati.sln
+      run: msbuild -p:Configuration=Release .\Installer\Windows\build-msi.bat  /t:Build /p:RunOctoPack=true #Duplicati.sln
       
 
     - name: dl
