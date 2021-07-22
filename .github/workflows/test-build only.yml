@@ -34,16 +34,19 @@ jobs:
         dotnet-version: 3.1.101
  
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore Duplicati.sln
       
     - name: Build
       run: dotnet build --configuration Release --no-restore
       
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+      
     - name: Publish
-      run: dotnet publish
+      run: dotnet publish  Duplicati.sln
+      
       #-----https://elanderson.net/2020/06/github-use-actions-to-publish-artifacts/
+      
     - name: Install Additional Dependencies
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt-get install gtk-sharp2
