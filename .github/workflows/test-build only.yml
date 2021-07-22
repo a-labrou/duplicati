@@ -34,7 +34,7 @@ jobs:
 
     - name: Build Duplicati (Windows)
       if: matrix.os == 'windows-latest'
-      run: msbuild -p:Configuration=Release duplicati/Installer/Windows/build-msi.bat
+      run: msbuild -p:Configuration=Release a-labrou/duplicati/blob/a-labrou-patch-3/Installer/Windows/build-msi.bat
 
 
 
