@@ -36,24 +36,26 @@ jobs:
     - name: Install dependencies
       run: dotnet restore Duplicati.sln
       
-    - name: Build
-      run: dotnet build --configuration Release --no-restore Duplicati.sln
+  #  - name: Build
+  #    run: dotnet build --configuration Release --no-restore Duplicati.sln
       
   #  - name: Test
   #    run: dotnet test --no-restore --verbosity normal Duplicati.sln
-      
-    - name: Publish
-      run: dotnet publish  Duplicati.sln
-      
-      #-----https://elanderson.net/2020/06/github-use-actions-to-publish-artifacts/
-      
+  
     - name: Install Additional Dependencies
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt-get install gtk-sharp2
 
     - name: Build Duplicati (Windows)
       if: matrix.os == 'windows-latest'
-      run: msbuild -p:Configuration=Release Duplicati.sln #\Installer\Windows\build-msi.bat  ,to path mpainei kai me " "
+      run: msbuild -p:Configuration=Release Duplicati.sln
+      
+    - name: Publish
+      run: dotnet publish  Duplicati.sln
+      
+      #-----https://elanderson.net/2020/06/github-use-actions-to-publish-artifacts/
+      
+ #\Installer\Windows\build-msi.bat  ,to path mpainei kai me " "
       
 
     - name: dl
