@@ -39,8 +39,8 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore Duplicati.sln
       
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal Duplicati.sln
+  #  - name: Test
+  #    run: dotnet test --no-restore --verbosity normal Duplicati.sln
       
     - name: Publish
       run: dotnet publish  Duplicati.sln
