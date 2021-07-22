@@ -27,20 +27,6 @@ jobs:
 
     - name: Restore NuGet Packages
       run: nuget restore Duplicati.sln
-
- #  - name: Setup .NET Core #1
- #    uses: actions/setup-dotnet@v1 #1
- #    with:  #1
- #      dotnet-version: 3.1.101 #1 
- 
-  # - name: Install dependencies #1
-  #   run: dotnet restore Duplicati.sln #1
-      
-  #  - name: Build #1
-  #    run: dotnet build --configuration Release --no-restore Duplicati.sln  #1
-      
-  #  - name: Test #1
-  #    run: dotnet test --no-restore --verbosity normal Duplicati.sln #1
   
     - name: Install Additional Dependencies 
       if: matrix.os == 'ubuntu-latest'
@@ -49,13 +35,10 @@ jobs:
     - name: Build Duplicati (Windows)
       if: matrix.os == 'windows-latest'
       run: msbuild -p:Configuration=Release Duplicati.sln  #\Installer\Windows\build-msi.bat ,to path mpainei kai me " "
-      
-   # - name: Publish  #1
-   #   run: dotnet publish  Duplicati.sln #1
 
     - name: download_artifacts #diko mou
       uses: actions/download-artifact@v2 #
 
- # https://elanderson.net/2020/06/github-use-actions-to-publish-artifacts/ -->#1
+
 
 
