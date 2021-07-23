@@ -31,13 +31,33 @@ jobs:
     - name: Install Additional Dependencies 
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt-get install gtk-sharp2
+      
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+ 
+    - name: Install dependencies
+      run: dotnet restore ${{ github.workspace }}/src/WebApp1/WebApp1.csproj
+      
+    - name: Build
+      run: dotnet build Duplicati.sln --configuration Release --no-restore
+      #run: dotnet build ${{ github.workspace }}/src/WebApp1/WebApp1.csproj --configuration Release --no-restore
+      
+    - name: Test
+      run: dotnet test Duplicati.sln --no-restore --verbosity normal
 
-    - name: Build Duplicati (Windows)
-      if: matrix.os == 'windows-latest'
-      run: msbuild -p:Configuration=Release .\Installer\Windows\build-msi.bat #Duplicati.sln  #,to path mpainei kai me " "
+    - name: Publish
+      run: dotnet publish Duplicati.sln
+      
 
-    - name: download_artifacts #diko mou
-      uses: actions/download-artifact@v2 #
+   # - name: Build Duplicati (Windows)
+   #   if: matrix.os == 'windows-latest'
+   #   run: msbuild -p:Configuration=Release Duplicati.sln #  #,to path mpainei kai me " ".\Installer\Windows\build-msi.bat
+      
+
+    #- name: download_artifacts #diko mou
+   #   uses: actions/download-artifact@v2 #
 
 
 
