@@ -38,7 +38,7 @@ jobs:
         dotnet-version: 3.1.101
  
     - name: Install dependencies
-      run: dotnet restore ${{ github.workspace }}/src/WebApp1/WebApp1.csproj
+      run: dotnet restore Duplicati.sln
       
     - name: Build
       run: dotnet build Duplicati.sln --configuration Release --no-restore
