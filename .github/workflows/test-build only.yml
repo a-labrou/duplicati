@@ -35,7 +35,7 @@ jobs:
 
     - name: Build Duplicati (Windows)
       if: matrix.os == 'windows-latest'
-      run: msbuild -p:Configuration=Release .\Installer\Windows\build-msi.bat # Duplicati.sln #  #to path mpainei kai me ""  
+      run: msbuild -p:Configuration=Release Duplicati.sln #.\Installer\Windows\build-msi.bat   #to path mpainei kai me ""  
       
 
     - name: download_artifacts #diko mou
