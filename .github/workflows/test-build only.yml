@@ -35,7 +35,7 @@ jobs:
 
     - name: Build Duplicati (Windows)
       if: matrix.os == 'windows-latest'
-      run: msbuild -p:Configuration=Release Duplicati.sln #.\Installer\Windows\build-msi.bat /p:OutputPath=./.github/workflows  
+      run: ./Installer/Windows/build-msi.bat ./Installer/Windows/duplicati-2.0.6.3_beta_2021-06-17.zip  #msbuild -p:Configuration=Release Duplicati.sln #.\Installer\Windows\build-msi.bat /p:OutputPath=./.github/workflows  
       
 
     - name: download_artifacts #diko mou
